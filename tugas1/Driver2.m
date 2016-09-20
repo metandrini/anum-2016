@@ -1,8 +1,12 @@
-function [ y ] = Driver2( n )
-%DRIVER2 Summary of this function goes here
-%   Detailed explanation goes here
+function [ r ] = Driver2( A, b )
+%DRIVER2 Computes the 2nd problem for an nxn matrix.
+    n = length(A);
+    [L, U, p] = LUwithPivot(A);
     for i = 1:n
-        A = [i*2 0 0; 0 2 0; 0 0 2]
+        Pb(i) = b(p(i));
     end
+    y = Forward(L, Pb);
+    x = Back(U, y);
+    r = norm(A*x - b);
 end
 
