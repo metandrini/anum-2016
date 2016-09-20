@@ -1,4 +1,4 @@
-function [ x ] = Upper( A, b )
+function [ x ] = Back( A, b )
 %UPPER Computes the solution of x to the upper triangular matrix A
     n = length(b);
     x = zeros(n,1);

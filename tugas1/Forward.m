@@ -1,4 +1,4 @@
-function [ x ] = Lower( A, b )
+function [ x ] = Forward( A, b )
 %LOWER Computes the solution of x to the lower triangular matrix A
     n = length(b);
     x = zeros(n,1);
