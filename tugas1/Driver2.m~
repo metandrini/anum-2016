@@ -1,9 +1,0 @@
-function [ y ] = Driver2( A, b )
-%DRIVER2 Computes the 2nd problem for an nxn matrix.
-    n = lengt
-    [L, U, p] = LUwithPivot(A)
-    for i = 1:n
-        A = [i*2 0 0; 0 2 0; 0 0 2]
-    end
-end
-
