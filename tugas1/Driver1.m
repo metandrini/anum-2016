@@ -1,5 +1,5 @@
-function [ x ] = Driver( n )
-%DRIVER Summary of this function goes here
+function [ x ] = Driver1( n )
+%DRIVER1 Summary of this function goes here
 %   Detailed explanation goes here
     x = zeros(2, 10);
     for i = 100:100:n
