@@ -24,3 +24,12 @@ for i=1:16
 end
 
 table(k, r)
+x = linspace(1,16,16);
+p = polyfit(x,r.',14);
+x1 = linspace(1, 16);
+r1 = polyval(p,x1);
+figure
+plot(x,r,'o')
+hold on
+plot(x1,r1)
+hold off
