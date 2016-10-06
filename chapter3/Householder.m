@@ -1,19 +1,20 @@
-function [ R ] = Householder( A )
+function [ R, c ] = Householder( A, b )
 %HOUSEHOLDER Generates upper triangular matrix R
 % given mxn matrix A (with m>n) via Householder
 % factorization.
     [m, n] = size(A);
-    e = eye(m);
-    R = A;
+    At = [A b];
     for i=1:n
-        z = zeros(m,1);
-        z(i:m,1) = R(i:m,i);
-        v = z + (sign(z(i)) * norm(z) * e(:,i));
-        % Calculate A = H * A
-        for j=1:n
-            x = R(:,j);
-            R(:,j) = x - 2*((v'*x)/(v'*v))*v;
+        z = At(i:m,i);
+        v = z + (sign(z(1)) * norm(z) * eye(m-i+1,1));
+        a = 2 / (v' * v);
+        % Calculate At = H * At
+        for j=i:n+1
+            x = At(i:m,j);
+            At(i:m,j) = x - a * (v' * x * v);
         end
     end
+    R = At(:,1:n);
+    c = At(:,n+1);
 end
 
