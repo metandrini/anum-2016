@@ -15,7 +15,7 @@ function [ R, c ] = Householder( A, b )
             At(i:m,j) = x - a * (v' * x * v);
         end
     end
-    R = At(:,1:n);
-    c = At(:,n+1);
+    R = At(1:n,1:n);
+    c = At(1:n,n+1);
 end
 
