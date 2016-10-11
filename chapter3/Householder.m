@@ -4,9 +4,10 @@ function [ R, c ] = Householder( A, b )
 % factorization.
     [m, n] = size(A);
     At = [A b];
+    I = eye(m, n);
     for i=1:n
         z = At(i:m,i);
-        v = z + (sign(z(1)) * norm(z) * eye(m-i+1,1));
+        v = z + (sign(z(1)) * norm(z) * I(1:m-i+1,1));
         a = 2 / (v' * v);
         % Calculate At = H * At
         for j=i:n+1
