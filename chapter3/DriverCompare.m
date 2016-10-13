@@ -1,11 +1,10 @@
-A = [1 1 1 1 1; -1 -.5 0 .5 1; 1 .25 0 .25 1]';
-b = [1 .5 0 .5 2]';
-
-[At1, bt1] = Householder(A, b);
-xls1 = Back(At1, bt1);
-
-[At2, bt2] = G1Givens(A, b);
-xls2 = Back(At2, bt2);
-
-disp(xls1);
-disp(xls2);
+t_f = zeros(1, 10);
+t_g = zeros(1, 10);
+for i=1:10
+    A = rand(i*120, i*100);
+    b = rand(i*120, 1);
+    f = @() Householder(A, b);
+    g = @() Givens(A, b);
+    t_f(i) = timeit(f);
+    t_g(i) = timeit(g);
+end

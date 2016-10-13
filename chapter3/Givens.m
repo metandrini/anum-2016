@@ -1,4 +1,4 @@
-function [ R, x ] = G1Givens( A, b )
+function [ R, x ] = Givens( A, b )
 %UNTITLED Summary of this function goes here
 %   Detailed explanation goes here
     [m, n] = size(A);
@@ -10,10 +10,9 @@ function [ R, x ] = G1Givens( A, b )
             r = sqrt(a1^2 + a2^2);
             c = a1/r;
             s = a2/r;
-            tmp1 = c * At(i,:) + s * (At(j,:));
-            tmp2 = -s * At(i,:) + c * (At(j,:));
-            At(i,:) = tmp1;
-            At(j,:) = tmp2;
+            tmp = -s * At(i,i:n+1) + c * (At(j,i:n+1));
+            At(i,i:n+1) = c * At(i,i:n+1) + s * (At(j,i:n+1));
+            At(j,i:n+1) = tmp;
         end
     end
     R = At(1:n,1:n);
