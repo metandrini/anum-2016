@@ -10,13 +10,12 @@ for i=1:10
     t_g(i) = timeit(g);
 end
 n = 100:100:1000;
-x_cont = linspace(100,1000);
+n_cont = linspace(100,1000);
 coef_h = polyfit(n, t_h, 3);
 coef_g = polyfit(n, t_g, 3);
-y_h = polyval(coef_h, x_cont);
-y_g = polyval(coef_g, x_cont);
+poly_h = polyval(coef_h, n_cont);
+poly_g = polyval(coef_g, n_cont);
 
 plot(n, t_h); hold on;
 plot(n, t_g); hold on;
-plot(x_cont, y_h); hold on;
-plot(x_cont, y_g)
+plot(poly_h)
