@@ -15,8 +15,7 @@ coef_h = polyfit(n, t_h, 3);
 coef_g = polyfit(n, t_g, 3);
 y_h = polyval(coef_h, x_cont);
 y_g = polyval(coef_g, x_cont);
+t = vertcat(t_h, t_g);
+y = vertcat(y_h, y_g);
 
-plot(n, t_h); hold on;
-plot(n, t_g); hold on;
-plot(x_cont, y_h); hold on;
-plot(x_cont, y_g)
+createfigure(n, t, x_cont, y)
