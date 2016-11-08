@@ -4,7 +4,7 @@ function [ U, bt ] = Gaussian( A, b )
     B = [A b];
     for i=1:n-1 % column
         for j=i+1:n % goingdown
-            m = B(j,i) / B(i,i);
+            m = B(j,i) / B(i,i)
             B(j,:) = B(j,:) - (m * B(i,:));
         end
     end
