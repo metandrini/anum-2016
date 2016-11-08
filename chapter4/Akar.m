@@ -9,4 +9,3 @@ while abs(x0^2 - a) > tol
 end
 x_star = x0;
 end
-
