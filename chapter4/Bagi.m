@@ -1,5 +1,5 @@
 function [ x_star, k ] = Bagi( divend, divsor, tol )
-%BAGI Summary of this function goes here
+%BAGI Performs division operation using Newton-Raphson method
 %   Source: http://www.cs.utsa.edu/~wagner/CS3343/newton/division.html
 k = 0; m = 0;
 d = divsor;
