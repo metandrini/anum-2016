@@ -7,22 +7,18 @@ d = divsor;
 while (d < 0.5) || (d > 1)
     if d > 1
         d = d * 0.5;
+        m = m - 1;
     elseif d < 0.5
         d = d * 2;
+        m = m + 1;
     end
-    m = m + 1;
 end
 % Initial approximation of x0 = 1/d
 x0 = 2.82353 - 1.88235 * d;
-x_star = divend * bitsra(x0,m);
+x_star = divend * (x0 * 2^m);
 while abs(x_star - divend/divsor) > tol
-    x1 = x0 + (x0 * (1 - d*x0));
-    if divsor >= 1
-        x_star = divend * (x1 * 2^-m);
-    elseif divsor <= 0.5
-        x_star = divend * (x1 * 2^m);
-    end
-    x0 = x1;
+    x0 = x0 * (2 - d*x0);
+    x_star = divend * (x0 * 2^m);
     k = k + 1;
 end
 end
