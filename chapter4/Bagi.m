@@ -1,4 +1,4 @@
-function [ x_star, k ] = Bagi( divend, divsor, tol )
+function [ q, k ] = Bagi( divend, divsor, tol )
 %BAGI Performs division operation using Newton-Raphson method
 %   Source: http://www.cs.utsa.edu/~wagner/CS3343/newton/division.html
 k = 0; m = 0;
@@ -15,10 +15,10 @@ while (d < 0.5) || (d > 1)
 end
 % Initial approximation of x0 = 1/d
 x0 = 2.82353 - 1.88235 * d;
-x_star = divend * (x0 * 2^m);
-while abs(x_star - divend/divsor) > tol
+q = divend * (x0 * 2^m);
+while abs(q - divend/divsor) > tol
     x0 = x0 * (2 - d*x0);
-    x_star = divend * (x0 * 2^m);
+    q = divend * (x0 * 2^m);
     k = k + 1;
 end
 end
